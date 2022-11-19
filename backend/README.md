@@ -1,4 +1,3 @@
-[![Tests](../../actions/workflows/tests-13-sprint.yml/badge.svg)](../../actions/workflows/tests-13-sprint.yml) [![Tests](../../actions/workflows/tests-14-sprint.yml/badge.svg)](../../actions/workflows/tests-14-sprint.yml)
 # Бэкенд проекта Mesto фронтенд + бэкенд
 # Бэкенд проекта "Красивые места"
 в проекте используетсяЖ
