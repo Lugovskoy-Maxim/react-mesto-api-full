@@ -1,0 +1,6 @@
+.popup_type_photo {
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 0;
+}

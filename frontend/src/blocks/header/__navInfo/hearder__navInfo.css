@@ -1,0 +1,4 @@
+.header__navInfo {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,12 @@
+.popup__image-container {
+  z-index: 3;
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  color: #fff;
+  box-shadow: none;
+  text-align: start;
+}

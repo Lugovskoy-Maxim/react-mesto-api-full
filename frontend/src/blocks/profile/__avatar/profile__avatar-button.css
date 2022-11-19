@@ -1,0 +1,19 @@
+.profile__avatar-button{
+  background: url(../../../Images/VectorEditAvatar.svg) no-repeat;
+  background-position: center;
+  background-size: 26px;
+  border: none;
+  box-sizing: border-box;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-right: 30px;
+  grid-area: image;
+  margin: 40px auto 50px;
+}
+
+@media screen and (max-width: 970px) {
+  .profile__avatar-button {
+    margin: 40px auto 32px;
+  }
+}

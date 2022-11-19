@@ -1,0 +1,12 @@
+.element {
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-width: 282px;
+  overflow: hidden;
+  list-style: none;
+  list-style-type: none;
+  position: relative;
+}

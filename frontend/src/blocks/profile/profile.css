@@ -1,0 +1,20 @@
+.profile {
+  max-width: 880px;
+  display: grid;
+  grid-template-areas: "image info . . . . . . addbutton";
+  justify-content: space-between;
+  margin: 0 auto;
+  align-items: center;
+}
+
+@media screen and (max-width: 970px) {
+  .profile {
+    width: 282px;
+    flex-direction: column;
+    grid-template-areas:
+      "image"
+      "info"
+      "addbutton";
+    justify-items: center;
+  }
+}

@@ -1,0 +1,9 @@
+.login__button-container {
+  margin-top: 186px;
+  min-height: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.21;
+  border: none;
+  border-radius: 2px;
+}
