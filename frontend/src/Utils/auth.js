@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://api.lugo.nomoredomains.icu';
 
 const handleResponse = res => {
   if (res.ok) {

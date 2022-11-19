@@ -91,8 +91,8 @@ class Api {
 }
 
 export const api = new Api({
-  // https://api.lugo.nomoredomains.icu
-  baseUrl: "http://localhost:3000",
+  // http://localhost:3000
+  baseUrl: "https://api.lugo.nomoredomains.icu",
   headers: {
     "Content-Type": "application/json",
   },
