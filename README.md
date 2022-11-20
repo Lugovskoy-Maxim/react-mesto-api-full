@@ -1,8 +1,7 @@
 # react-mesto-api-full
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`.
 
-Публичный IPv4 адрес сервера: 51.250.55.139
-Frontend https://lugo.nomoredomains.icu/
-Backend https://api.lugo.nomoredomains.icu/
-
-  * todo: добавить описание api запросов
+# Публичный IPv4 адрес сервера: 51.250.55.139
+# Frontend https://lugo.nomoredomains.icu/
+# Backend https://api.lugo.nomoredomains.icu/
+# todo: добавить описание api запросов
