@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const { cors } = require('./middlewares/cors');
 const { login, createUser } = require('./controllers/users');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const routesUser = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 mongoose.connect(MANGO_URL);
+app.use(requestLogger);
 app.use('/signin', validateLogin, login);
 app.use('/signup', validateRegister, createUser);
 app.get('/signout', (req, res) => {
@@ -36,7 +38,7 @@ app.use(auth);
 app.use(cardRouter);
 app.use(routesUser);
 app.use('/*', () => { throw new NotFoundError('Запрашиваемая страница не найдена'); });
-
+app.use(errorLogger);
 app.use(errors());
 app.use((err, req, res, next) => {
   const { statusCode, message } = err;
