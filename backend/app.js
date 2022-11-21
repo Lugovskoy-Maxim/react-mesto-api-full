@@ -10,7 +10,8 @@ const routesUser = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
 const { validateLogin, validateRegister } = require('./middlewares/validation');
-const NotFoundError = require('./errors/NotFoundError'); // 404
+const NotFoundError = require('./errors/NotFoundError');
+// 404
 
 const { PORT = 3000, MANGO_URL = 'mongodb://localhost:27017/mestodb' } = process.env;
 
