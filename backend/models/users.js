@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
       maxlength: 30,
       default: 'Исследователь',
     },
-    email: {
+    email: { // валидируется в мидллваре валидаторе
       type: String,
       unique: true,
       required: true,
@@ -34,9 +34,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      // селект никуя не работает, пара костылей все исправят )
       select: false,
-      minlength: 2,
     },
   },
   {

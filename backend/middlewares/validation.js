@@ -29,22 +29,14 @@ const validateRegister = celebrate({
 
 const validateUserInfo = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-  }),
-});
-
-const validateUser = celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
-    about: Joi.string().min(2).max(30),
-    email: Joi.string().email(),
+    name: Joi.string().min(2).max(30).required(),
+    about: Joi.string().min(2).max(30).required(),
   }),
 });
 
 const validateUserAvatar = celebrate({
   body: Joi.object().keys({
-    avatar: Joi.string().custom((value) => {
+    avatar: Joi.string().required().custom((value) => {
       if (!isURL(value)) throw new CelebrateError('Некорректная ссылка на изображение');
       return value;
     }),
@@ -77,7 +69,6 @@ module.exports = {
   validateLogin,
   validateUserAvatar,
   validateUserInfo,
-  validateUser,
   validateRegister,
   validateUserId,
   validateCardId,
