@@ -1,4 +1,6 @@
 const allowedCors = [ // список разрешенных адресов
+  'https://api.lugo.nomoredomains.icu/signin',
+  'http://api.lugo.nomoredomains.icu/signin',
   'https://api.lugo.nomoredomains.icu',
   'http://api.lugo.nomoredomains.icu',
   'https://lugo.nomoredomains.icu',

@@ -53,6 +53,7 @@ function App() {
         .checkToken(jwt)
         .then((res) => {
           if (res) {
+            setEmail(res.email);
             setLoggedIn(true);
             history.push("/");
           }
@@ -95,7 +96,6 @@ function App() {
       Promise.all([api.getUserData(), api.getInitialCards()])
         .then((data) => {
           setCurrentUser(data[0]);
-          setEmail(data[0].email);
           setCards(data[1].data);
         })
         .catch((err) => {
