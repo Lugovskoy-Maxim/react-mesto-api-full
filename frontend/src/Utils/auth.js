@@ -32,7 +32,7 @@ export const authorize = (email, password) => {
 }
 
 export async function checkToken() {
-  return await fetch(`${BASE_URL}`, { ///users/me
+  return await fetch(`${BASE_URL}/users/me`, { //
     method: 'GET',
     credentials: 'include',
     headers: {
