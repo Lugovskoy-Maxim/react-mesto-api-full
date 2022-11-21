@@ -32,9 +32,11 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при создании пользователя'));
+        return;
       }
       if (err.code === 11000) {
         next(new ConflictError('Пользователь с данным email уже существует'));
+        return;
       }
       next(err);
     });
@@ -47,6 +49,7 @@ module.exports.findUserbyId = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Передан некорректный id'));
+        return;
       }
       next(err);
     });
@@ -59,6 +62,7 @@ module.exports.getUserInfo = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new NotFoundError('Передан некорректный id'));
+        return;
       }
       next(err);
     });
@@ -75,6 +79,7 @@ module.exports.updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные пользователя'));
+        return;
       }
       next(err);
     });
@@ -92,9 +97,11 @@ module.exports.updateAvatar = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Передан некорректный id'));
+        return;
       }
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Ошибка. Проверьте правильность введенных данных'));
+        return;
       }
       next(err);
     });
@@ -107,7 +114,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'secret', { expiresIn: '7d' });
-      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true }).send({ token });
+      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true }); // .send({ token })
     })
     .catch(next);
 };

@@ -18,6 +18,7 @@ module.exports.createCard = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Ошибка. Проверьте правильность введенных данныхПередан некорректный id'));
+        return;
       }
       next(err);
     });
@@ -29,15 +30,15 @@ module.exports.removeCard = (req, res, next) => {
     .then((card) => {
       const newLocalOwner = card.owner.toString() === req.user._id;
       if (newLocalOwner) {
-        card.remove()
+        return card.remove()
           .then(() => res.send({ message: 'Карточка удалена' }));
-        return;
       }
       throw new ForbiddenErrors('Невозможно удалить чужую карточку');
     })
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некорректные данные'));
+        return;
       }
       next(err);
     });
@@ -53,6 +54,7 @@ module.exports.likeCard = (req, res, next) => Card.findByIdAndUpdate(
   .catch((err) => {
     if (err.name === 'CastError') {
       next(new BadRequestError('Переданы некорректные данные'));
+      return;
     }
     next(err);
   });
@@ -67,6 +69,7 @@ module.exports.dislikeCard = (req, res, next) => Card.findByIdAndUpdate(
   .catch((err) => {
     if (err.name === 'CastError') {
       next(new BadRequestError('Переданы некорректные данные'));
+      return;
     }
     next(err);
   });
