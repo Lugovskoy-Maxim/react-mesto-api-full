@@ -44,8 +44,6 @@ function App() {
   const [toDeleteCard, setDeleteCardId] = useState({ id: "" });
   const history = useHistory();
 
-
-
   function handleTokenCheck() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
@@ -53,8 +51,10 @@ function App() {
         .checkToken(jwt)
         .then((res) => {
           if (res) {
+            setEmail(res.email);
             setLoggedIn(true);
             history.push("/");
+            setCurrentUser(res); // 12321312
           }
         })
         .catch((err) => {
@@ -90,12 +90,25 @@ function App() {
     setSelectedCard({ link: "", title: "" });
   };
 
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     Promise.all([api.getUserData(), api.getInitialCards()])
+  //       .then((data) => {
+  //         setCurrentUser(data[0]);
+  //         setEmail(data[0].email);
+  //         setCards(data[1].data);
+  //       })
+  //       .catch((err) => {
+  //         console.log(`${err}`);
+  //       });
+  //   }
+  // }, [setCards, loggedIn]);
+
   useEffect(() => {
     if (loggedIn) {
-      Promise.all([api.getUserData(), api.getInitialCards()])
+      api.getInitialCards()
         .then((data) => {
-          setCurrentUser(data[0]);
-          setEmail(data[0].email);
+          // setEmail(data[0].email);
           setCards(data[1].data);
         })
         .catch((err) => {
