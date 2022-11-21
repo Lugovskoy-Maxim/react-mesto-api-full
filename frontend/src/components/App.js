@@ -52,9 +52,9 @@ function App() {
         .then((res) => {
           if (res) {
             setEmail(res.email);
+            setCurrentUser(res); // 12321312
             setLoggedIn(true);
             history.push("/");
-            setCurrentUser(res); // 12321312
           }
         })
         .catch((err) => {
@@ -109,7 +109,7 @@ function App() {
       api.getInitialCards()
         .then((data) => {
           // setEmail(data[0].email);
-          setCards(data[1].data);
+          setCards(data.data);
         })
         .catch((err) => {
           console.log(`${err}`);
