@@ -46,15 +46,13 @@ function App() {
 
 
 
-  function handleTokenCheck() {  // заменить на куки  примерно так const token = req.cookies.access_tokenn
-    // localStorage.getItem("jwt");
+  function handleTokenCheck() {
     const jwt = localStorage.getItem("jwt");
     if (jwt) {
       auth
         .checkToken(jwt)
         .then((res) => {
           if (res) {
-            setEmail(res.email);
             setLoggedIn(true);
             history.push("/");
           }
@@ -96,7 +94,8 @@ function App() {
     if (loggedIn) {
       Promise.all([api.getUserData(), api.getInitialCards()])
         .then((data) => {
-          setCurrentUser(data[0]); //name, about, avatar, _id
+          setCurrentUser(data[0]);
+          setEmail(data[0].email);
           setCards(data[1].data);
         })
         .catch((err) => {
@@ -204,7 +203,6 @@ function App() {
       .then((res) => {
         if (res) {
           localStorage.setItem("jwt", res.token);
-
           handleTokenCheck();
           setIsDone(true);
           history.push("/");
