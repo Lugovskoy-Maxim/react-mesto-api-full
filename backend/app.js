@@ -24,17 +24,15 @@ mongoose.connect(MANGO_URL);
 app.use(requestLogger);
 app.use('/signin', validateLogin, login);
 app.use('/signup', validateRegister, createUser);
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
-});
-// обработчик ошибок celebrate
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
-  }, 0);
+  }, 10000);
 });
 app.use(auth);
-
+app.get('/signout', (req, res) => {
+  res.clearCookie('jwt').send({ message: 'Выход' });
+});
 app.use(cardRouter);
 app.use(routesUser);
 app.use('/*', () => { throw new NotFoundError('Запрашиваемая страница не найдена'); });
